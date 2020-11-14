@@ -3,13 +3,12 @@ import threading
 import discord
 from dotenv import load_dotenv
 from googlesearch import search
-from chat.models import Bot
+from chat.models import Bot, Trigger
 from chat.recent_history import store_history, history
 import psycopg2
 def run_bot():
     load_dotenv()
     histories = []
-    #recents = Bot.objects.all()
     #I have stored token and server name in .env file for ease of login
     TOKEN = os.getenv('DISCORD_TOKEN')
     GUILD = os.getenv('DISCORD_GUILD')
@@ -53,4 +52,9 @@ def run_bot():
 
     client.run(TOKEN)
 
-run_bot()
+#run_bot()
+'''trigger = Trigger.objects.all()
+print(trigger)
+if trigger.is_enabled:
+    run_bot()
+'''
