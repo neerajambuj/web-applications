@@ -16,10 +16,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
+from chat.views import launch ,homepage
 from chat.views import StartBot,launch
+
+
 urlpatterns = [
+    url('^$',homepage),
     path('chat/',StartBot.as_view(),name="start_bot"),
     #path('chat/',launch,name = 'bot_page'),
     path('chat/',include('chat.urls')),
+
     url(r'^admin/', admin.site.urls),
 ]
