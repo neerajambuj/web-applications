@@ -1,1 +1,1 @@
-web: gunicorn discord_bot.wsgi
+web:gunicorn discord_bot.wsgi
