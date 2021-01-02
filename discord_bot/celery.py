@@ -5,5 +5,6 @@ from celery import Celery
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'discord_bot.settings')
 app = Celery('discord_bot')
-app.config_from_object('django.conf:settings')#, namespace='Celery')
+print("apps=%s"%app)
+app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()

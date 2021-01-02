@@ -5,7 +5,7 @@ urlpatterns = [
     # Home Page
     url(r'^launch/$',views.launch,name = 'launch'),
     #url(r'',views.homepage,name = 'homepage'),
-    path('chat',views.StartBot,name = 'StartBot'),
+    #path('chat',views.StartBot,name = 'StartBot'),
     #path('launch',views.launch,name = 'launch'),
     #path('')
     ]

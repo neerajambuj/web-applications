@@ -22,7 +22,7 @@ from chat.views import StartBot,launch
 
 urlpatterns = [
     url('^$',homepage),
-    path('chat/',StartBot.as_view(),name="start_bot"),
+    #path('chat/',StartBot.as_view(),name="start_bot"),
     #path('chat/',launch,name = 'bot_page'),
     path('chat/',include('chat.urls')),
 
