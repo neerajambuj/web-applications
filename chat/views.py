@@ -19,7 +19,7 @@ def launch(request):
     #print(type(result),result)
     #print("Successfully Launched")
     #result = run_bot_task.delay()#apply_async(countdown=1)
-    #discord_app_task.delay('chat.bot.run_bot2')
+    discord_app_task.delay('chat.bot.run_bot')
     variables = {'message':"Bot Started running"}#'result':result}
     #return render(request, 'running.html', variables)
     return HttpResponse("Bot Started Running")   

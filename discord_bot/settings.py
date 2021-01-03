@@ -125,5 +125,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 STATIC_URL = '/static/'
+CELERY_STATISTICS = True
 #set DISABLE_COLLECTSTATIC=1
+#CELERY_BROKER_URL = "redis://redistogo:59000e2261216b9b34c63b7eadab022a@crestfish.redistogo.com:11012/"
+CELERY_BROKER_URL = 'redis://:pca82a3044d4404c338c044d18a1ab8207637cd055d11212a4c12891cb94ddb7f@ec2-54-225-229-89.compute-1.amazonaws.com:30039'
 django_heroku.settings(locals())
