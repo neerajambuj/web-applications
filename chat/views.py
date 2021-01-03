@@ -5,7 +5,7 @@ from chat.models import Bot
 #from schedular.tasks import apt_app_task
 from django.views.generic.edit import FormView
 from chat.forms import BOT
-from chat.tasks import run_bot_task
+#from chat.tasks import run_bot_task
 from schedular.tasks import discord_app_task
 from abort_discord import abort_discord_app
 class StartBot(FormView):
