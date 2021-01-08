@@ -1,4 +1,14 @@
 from django.shortcuts import render
+
+
+from celery import Celery
+from itertools import chain
+from discord_bot.celery import app
+from billiard.exceptions import Terminated
+
+
+
+
 from django.http import HttpResponse
 from chat.bot import run_bot
 from chat.models import Bot
@@ -20,11 +30,17 @@ def launch(request):
     #print(type(result),result)
     #print("Successfully Launched")
     #result = run_bot_task.delay()#apply_async(countdown=1)
+    '''for running_task in Tasks.objects.all():
+        if running_task.task_id:
+            #variables = {'message':"Bot Started running"}
+            #return render(request, 'running.html', variables)
+            app.control.revoke(running_task.task_id, terminate=True, signal='SIGUSR1')
+    '''
     result = discord_app_task.delay('chat.bot.run_bot')
     task = Tasks()
     task.task_id = result
     task.save()
-    print(result)
+    #print(result)
     variables = {'message':"Bot Started running",'result':result}
     return render(request, 'running.html', variables)
     #return HttpResponse("Bot Started Running")   
