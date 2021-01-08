@@ -17,7 +17,7 @@ def abort_discord_app():
         if l>1:
             for ids in app_task:
                 try:
-                    app.control.revoke(ids.task_id, terminate=True, signal='SIGUSR1')#'SIGKILL')
+                    app.control.revoke(ids.task_id, terminate=True, signal='SIGTERM')#'SIGKILL')
                 except:
                     return None
                 l -= 1
