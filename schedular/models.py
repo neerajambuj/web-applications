@@ -13,6 +13,8 @@ class Tasks(models.Model):
     Model to store the task details and track the same with respect to particular user
     """
     task_id = models.SlugField(editable=False, null=True, unique=True)
+    def __str__(self):
+        return '%s' % (self.task_id)
 
 
 
