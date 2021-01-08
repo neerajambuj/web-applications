@@ -53,7 +53,7 @@ def abort(request):
     #form_class = BOT
     #run_bot_task.delay()
     #run_bot_task.apply_async(countdown=10)
-    variables = {'message':"Bot Stooped running , Click on start button to start again"}
+    variables = {'message':"Bot Stoped running , Click on start button to start again"}
     return render(request, 'start_bot.html', variables)
 
 def homepage(request):
