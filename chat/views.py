@@ -48,12 +48,13 @@ def abort(request):
     print('Revoke')
     #print(result)
     #result.revoke()
-    discord_app_task.delay('chat.abort_discord.abort_discord_app')
+    #discord_app_task.delay('chat.abort_discord.abort_discord_app')
     #template_name =  'start_bot.html'
     #form_class = BOT
     #run_bot_task.delay()
     #run_bot_task.apply_async(countdown=10)
-    variables = {'message':"Bot Stoped running , Click on start button to start again"}
+    variables = {'message':"Welcome to Discord Bot page made by Neeraj"}
+
     return render(request, 'start_bot.html', variables)
 
 def homepage(request):
