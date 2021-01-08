@@ -4,6 +4,8 @@ from . import views
 urlpatterns = [
     # Home Page
     url(r'^launch/$',views.launch,name = 'launch'),
+    url(r'^abort/$',views.abort,name = 'abort'),
+
     #url(r'',views.homepage,name = 'homepage'),
     #path('chat',views.StartBot,name = 'StartBot'),
     #path('launch',views.launch,name = 'launch'),

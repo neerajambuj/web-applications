@@ -29,7 +29,8 @@ STATICFILES_DIRS = (
 SECRET_KEY = 'h=9#qrwmc!-)ier_93kw*+2f+g-55xv&id=c3ddk8k0)_k2$=$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG  = False
+#DEBUG  = False
+DEBUG  = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -129,8 +130,8 @@ CELERY_STATISTICS = True
 #set DISABLE_COLLECTSTATIC=1
 #BROKER_URL = "redis://redistogo:59000e2261216b9b34c63b7eadab022a@crestfish.redistogo.com:11012/"
 
-BROKER_URL = 'redis://:p9bbbac80796f9bb52a6cf99fd06330838d8c6f1b2d3d76b2d82ade604e96ea4d@ec2-23-21-136-122.compute-1.amazonaws.com:19229'
+CELERY_BROKER_URL = 'redis://:p9bbbac80796f9bb52a6cf99fd06330838d8c6f1b2d3d76b2d82ade604e96ea4d@ec2-23-21-136-122.compute-1.amazonaws.com:19229'
 CELERY_RESULT_BACKEND = 'redis://:p9bbbac80796f9bb52a6cf99fd06330838d8c6f1b2d3d76b2d82ade604e96ea4d@ec2-23-21-136-122.compute-1.amazonaws.com:19229'
-#BROKER_URL = 'redis://localhost:6379'
+#CELERY_BROKER_URL = 'redis://localhost:6379'
 #CELERY_BROKER_URL = 'redis://:pca82a3044d4404c338c044d18a1ab8207637cd055d11212a4c12891cb94ddb7f@ec2-54-225-229-89.compute-1.amazonaws.com:30039'
 django_heroku.settings(locals())

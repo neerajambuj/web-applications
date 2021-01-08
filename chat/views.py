@@ -6,7 +6,9 @@ from chat.models import Bot
 from django.views.generic.edit import FormView
 from chat.forms import BOT
 #from chat.tasks import run_bot_task
+from chat.abort_discord import abort_discord_app
 from schedular.tasks import discord_app_task
+from schedular.models import Tasks
 class StartBot(FormView):
     template_name = 'start_bot.html'
     form_class = BOT
@@ -18,22 +20,26 @@ def launch(request):
     #print(type(result),result)
     #print("Successfully Launched")
     #result = run_bot_task.delay()#apply_async(countdown=1)
-    discord_app_task.delay('chat.bot.run_bot')
-    variables = {'message':"Bot Started running"}#'result':result}
-    #return render(request, 'running.html', variables)
-    return HttpResponse("Bot Started Running")   
-'''def abort(request):
+    result = discord_app_task.delay('chat.bot.run_bot')
+    task = Tasks()
+    task.task_id = result
+    task.save()
+    print(result)
+    variables = {'message':"Bot Started running",'result':result}
+    return render(request, 'running.html', variables)
+    #return HttpResponse("Bot Started Running")   
+def abort(request):
     print('Revoke')
     #print(result)
     #result.revoke()
-    abort_discord_app()
-    template_name =  'start_bot.html'
-    form_class = BOT
+    discord_app_task.delay('chat.abort_discord.abort_discord_app')
+    #template_name =  'start_bot.html'
+    #form_class = BOT
     #run_bot_task.delay()
     #run_bot_task.apply_async(countdown=10)
-    variables = {'message':"Bot Stooped running"}
+    variables = {'message':"Bot Stooped running , Click on start button to start again"}
     return render(request, 'start_bot.html', variables)
-'''
+
 def homepage(request):
     #run_bot()
     #apt_app_task.delay('chat.bot.run_bot')
