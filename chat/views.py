@@ -26,40 +26,29 @@ class StartBot(FormView):
         return HttpResponse("Bot Started Running")
 
 def launch(request):
-    #result = run_bot_task.delay()
-    #print(type(result),result)
-    #print("Successfully Launched")
-    #result = run_bot_task.delay()#apply_async(countdown=1)
-    '''for running_task in Tasks.objects.all():
+    #killing the running task to avoid duplicacy
+    for running_task in Tasks.objects.all():
         if running_task.task_id:
-            #variables = {'message':"Bot Started running"}
-            #return render(request, 'running.html', variables)
             app.control.revoke(running_task.task_id, terminate=True, signal='SIGUSR1')
-    '''
+
+
+    #starting a new task
     result = discord_app_task.delay('chat.bot.run_bot')
     task = Tasks()
     task.task_id = result
     task.save()
-    #print(result)
+
     variables = {'message':"Bot Started running",'result':result}
     return render(request, 'running.html', variables)
-    #return HttpResponse("Bot Started Running")   
 def abort(request):
     print('Revoke')
-    #print(result)
-    #result.revoke()
-    discord_app_task.delay('chat.abort_discord.abort_discord_app')
-    #template_name =  'start_bot.html'
-    #form_class = BOT
-    #run_bot_task.delay()
-    #run_bot_task.apply_async(countdown=10)
+    abort_discord_app()
+
     variables = {'message':"Welcome to Discord Bot page made by Neeraj"}
 
     return render(request, 'start_bot.html', variables)
 
 def homepage(request):
-    #run_bot()
-    #apt_app_task.delay('chat.bot.run_bot')
     variables = {'message':"Welcome to Discord Bot page made by Neeraj"}
     return render(request, 'start_bot.html', variables)
 

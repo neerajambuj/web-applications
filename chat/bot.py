@@ -6,8 +6,7 @@ from googlesearch import search
 from chat.models import Bot, Trigger
 from chat.recent_history import store_history, history
 import psycopg2
-def run_bot2():
-    print(7+8)
+
 def run_bot():
     load_dotenv()
     histories = []
@@ -54,9 +53,4 @@ def run_bot():
 
     client.run(TOKEN)
 
-#run_bot()
-'''trigger = Trigger.objects.all()
-print(trigger)
-if trigger.is_enabled:
-    run_bot()
-'''
+

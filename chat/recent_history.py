@@ -42,6 +42,5 @@ def history(name_of_query):
 def store_history(message):
     # Here I am storing the google search string in the database
     query = Bot(history = message)#content.lower()[7:])
-    #histories.append(message)
     query.save()
 
