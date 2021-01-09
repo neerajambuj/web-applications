@@ -13,6 +13,7 @@ def run_bot():
     #I have stored token and server name in .env file for ease of login
     TOKEN = os.getenv('DISCORD_TOKEN')
     GUILD = os.getenv('DISCORD_GUILD')
+    print(TOKEN)
     client = discord.Client()
     @client.event
     async def on_ready():
