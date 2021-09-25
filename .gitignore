@@ -1,0 +1,10 @@
+/**/*.pyc
+/**/*.*.pyc
+venv/*
+/**/*.xlsx
+/**/*.XLSX
+/**/*.xml
+/**/*.sw*
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
